@@ -20,10 +20,10 @@ void foobar(int x, int y)
 
 int main(void)
 {
-	Foo foo;
+    Foo foo;
     Signal<int, int> s;
 	
-	// Connect a function
+    // Connect a function
     s.connect(foobar);
     
     // Connect a class method
