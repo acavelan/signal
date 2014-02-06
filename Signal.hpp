@@ -15,30 +15,30 @@ class Signal
             _calls.clear();
         }
 
-        inline void connect(std::function<void(Args...)> fct)
+        void connect(std::function<void(Args...)> fct)
         {
             _calls.push_back(fct);
         }
         
         template<typename Object>
-        inline void connect(Object* object, void (Object::*method)(Args...))
+        void connect(Object* object, void (Object::*method)(Args...))
         {
             _calls.push_back([object,method](Args... args){(*object.*method)(args...);});
         }
         
         template<typename Object>
-        inline void connect(Object* object, void (Object::*method)(Args...) const)
+        void connect(Object* object, void (Object::*method)(Args...) const)
         {
             _calls.push_back([object,method](Args... args){(*object.*method)(args...);});
         }
         
         template<typename Object>
-        inline void connect(const Object* object, void (Object::*method)(Args...) const)
+        void connect(const Object* object, void (Object::*method)(Args...) const)
         {
             _calls.push_back([object,method](Args... args){(*object.*method)(args...);});
         }
 
-        inline void emit(Args... args)
+        void emit(Args... args)
         {
             for(auto call : _calls)
                 call(args...);
