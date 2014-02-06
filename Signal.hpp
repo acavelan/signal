@@ -64,7 +64,7 @@ class Signal
 
         void emit(Args... args)
         {
-            for(auto it = _calls.begin() ; it!=_calls.end() ; it++)
-                (*it)(args...);
+            for(auto call : _calls)
+                call(args...);
         }
 };
