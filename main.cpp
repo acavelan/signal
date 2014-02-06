@@ -4,13 +4,11 @@
 class Foo
 {
     public:
-    
-	Foo() {}
 
-    void bar(int x, int y)
-    {
-        printf("Foo::bar(%d, %d)\n", x, y);
-    }
+        void bar(int x, int y)
+        {
+            printf("Foo::bar(%d, %d)\n", x, y);
+        }
 };
 
 void foobar(int x, int y)
